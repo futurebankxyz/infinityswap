@@ -5,6 +5,8 @@ import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import { PortisConnector } from '@web3-react/portis-connector'
 import { LatticeConnector } from '@web3-react/lattice-connector'
 import { TorusConnector } from '@web3-react/torus-connector'
+import { OneWalletConnector } from '@harmony-react/onewallet-connector'
+import { MathWalletConnector } from '@harmony-react/mathwallet-connector'
 
 import { FortmaticConnector } from './Fortmatic'
 import { NetworkConnector } from './NetworkConnector'
@@ -27,7 +29,8 @@ const RPC = {
   [ChainId.AVALANCHE]: 'https://api.avax.network/ext/bc/C/rpc',
   [ChainId.FUJI]: 'https://api.avax-test.network/ext/bc/C/rpc',
   [ChainId.HECO]: 'https://http-mainnet.hecochain.com',
-  [ChainId.HECO_TESTNET]: 'https://http-testnet.hecochain.com'
+  [ChainId.HECO_TESTNET]: 'https://http-testnet.hecochain.com',
+  [ChainId.HARMONY]: 'https://api.harmony.one'
 }
 
 export const network = new NetworkConnector({
@@ -58,7 +61,8 @@ export const injected = new InjectedConnector({
     43114, // avalanche
     43113, // fuji
     128, // heco
-    256 // heco testnet
+    256, // heco testnet
+    16666000000 // Harmony.one  Mainnet 
   ]
 })
 
@@ -93,12 +97,17 @@ export const portis = new PortisConnector({
 
 // mainnet only
 export const walletlink = new WalletLinkConnector({
-         url: RPC[ChainId.MAINNET],
-         appName: 'InfinitySwap',
-         appLogoUrl: 'https://raw.githubusercontent.com/futurebankxyz/art/main/resources/infinityswap/logo-512x512.png'
-       })
+  url: RPC[ChainId.MAINNET],
+  appName: 'InfinitySwap',
+  appLogoUrl: 'https://raw.githubusercontent.com/futurebankxyz/art/main/resources/infinityswap/logo-512x512.png'
+})
 
 // mainnet only
 export const torus = new TorusConnector({
   chainId: 1
 })
+
+// mainnet only
+export const onewallet = new OneWalletConnector({ chainId: 1 })
+
+export const mathwallet = new MathWalletConnector({ chainId: 1 })

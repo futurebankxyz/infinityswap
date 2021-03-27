@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token, WETH } from '@sushiswap/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
-import { fortmatic, injected, portis, lattice, walletconnect, walletlink, torus } from '../connectors'
+import { fortmatic, injected, portis, lattice, walletconnect, walletlink, torus, onewallet } from '../connectors'
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
@@ -82,7 +82,8 @@ const WRAPPED_NATIVE_ONLY: ChainTokenList = {
   [ChainId.AVALANCHE]: [WETH[ChainId.AVALANCHE]],
   [ChainId.FUJI]: [WETH[ChainId.FUJI]],
   [ChainId.HECO]: [WETH[ChainId.HECO]],
-  [ChainId.HECO_TESTNET]: [WETH[ChainId.HECO_TESTNET]]
+  [ChainId.HECO_TESTNET]: [WETH[ChainId.HECO_TESTNET]],
+  [ChainId.HARMONY]: [WETH[ChainId.HARMONY]]
 }
 
 // Default Ethereum chain tokens
@@ -112,11 +113,39 @@ export const FANTOM: { [key: string]: Token } = {
   WETH: new Token(ChainId.FANTOM, '0x74b23882a30290451A17c44f4F05243b6b58C76d', 18, 'WETH', 'Wrapped Ether')
 }
 
+export const HARMONY: { [key: string]: Token } = {
+  WBTC: new Token(ChainId.HARMONY, '0x3095c7557bCb296ccc6e363DE01b760bA031F2d9', 6, 'USDC', 'USD Coin'),
+  USDC: new Token(ChainId.HARMONY, '0x985458E523dB3d53125813eD68c274899e9DfAb4', 6, 'WBTC', 'Wrapped BTC'),
+  BUSD: new Token(ChainId.HARMONY, '0xe176ebe47d621b984a73036b9da5d834411ef734', 6, 'BUSD', 'Binance USD'),
+  ETH: new Token(ChainId.HARMONY, '0x6983D1E6DEf3690C4d616b13597A09e6193EA013', 8, 'ETH', 'ETHER'),
+  DAI: new Token(ChainId.HARMONY, '0xEf977d2f931C1978Db5F6747666fa1eACB0d0339', 18, 'DAI', 'Dai Stablecoin'),
+  WETH: new Token(ChainId.HARMONY, '0xF720b7910C6b2FF5bd167171aDa211E226740bfe', 18, 'WETH', 'Wrapped Ether')
+}
+
+
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WRAPPED_NATIVE_ONLY,
-  [ChainId.MAINNET]: [...WRAPPED_NATIVE_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR, WBTC, RUNE, NFTX, STETH],
+  [ChainId.MAINNET]: [
+    ...WRAPPED_NATIVE_ONLY[ChainId.MAINNET],
+    DAI,
+    USDC,
+    USDT,
+    COMP,
+    MKR,
+    WBTC,
+    RUNE,
+    NFTX,
+    STETH
+  ],
   [ChainId.FANTOM]: [...WRAPPED_NATIVE_ONLY[ChainId.FANTOM], FANTOM.DAI, FANTOM.USDC, FANTOM.WBTC, FANTOM.WETH],
+  [ChainId.HARMONY]: [
+    ...WRAPPED_NATIVE_ONLY[ChainId.HARMONY],
+    HARMONY.DAI,
+    HARMONY.USDC,
+    HARMONY.WBTC,
+    HARMONY.WETH
+  ],
   [ChainId.BSC]: [...WRAPPED_NATIVE_ONLY[ChainId.BSC], BSC.DAI, BSC.USD, BSC.USDC, BSC.USDT, BSC.BTCB]
 }
 
@@ -317,6 +346,15 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     name: 'Torus',
     iconName: 'torusIcon.png',
     description: 'Login using Torus hosted wallet',
+    href: null,
+    color: '#315CF5',
+    mobile: true
+  },
+  Harmony: {
+    connector: onewallet,
+    name: 'Harmony One Wallet',
+    iconName: 'harmonyIcon.png',
+    description: 'Login using Harmony One Wallet',
     href: null,
     color: '#315CF5',
     mobile: true
