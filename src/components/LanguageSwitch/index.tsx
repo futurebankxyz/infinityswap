@@ -14,6 +14,7 @@ import ViFlag from '../../assets/images/vi-flag.png'
 import EnFlag from '../../assets/images/en-flag.png'
 import DeFlag from '../../assets/images/de-flag.png'
 import IwFlag from '../../assets/images/iw-flag.png'
+import PtBrFlag from '../../assets/images/pt-BR-flag.png'
 
 const ExtendedStyledMenuButton = styled(StyledMenuButton)`
   font-size: 1.25rem;
@@ -67,6 +68,10 @@ const LANGUAGES: { [x: string]: { flag: string; language: string; dialect?: stri
   en: {
     flag: EnFlag,
     language: 'English'
+  },
+  'pt-BR': {
+    flag: PtBrFlag,
+    language: 'Português Brasil'
   },
   de: {
     flag: DeFlag,
