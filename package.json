@@ -1,6 +1,6 @@
 {
-  "name": "@sushiswap/interface",
-  "description": "SushiSwap Interface",
+  "name": "@infinityswap/exchange",
+  "description": "InfinitySwap Exchange",
   "homepage": ".",
   "private": true,
   "devDependencies": {
