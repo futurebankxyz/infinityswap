@@ -93,10 +93,10 @@ export const portis = new PortisConnector({
 
 // mainnet only
 export const walletlink = new WalletLinkConnector({
-         url: RPC[ChainId.MAINNET],
-         appName: 'InfinitySwap',
-         appLogoUrl: 'https://raw.githubusercontent.com/futurebankxyz/art/main/resources/infinityswap/logo-512x512.png'
-       })
+  url: RPC[ChainId.MAINNET],
+  appName: 'InfinitySwap',
+  appLogoUrl: 'https://raw.githubusercontent.com/futurebankxyz/art/main/resources/infinityswap/logo-512x512.png'
+})
 
 // mainnet only
 export const torus = new TorusConnector({
