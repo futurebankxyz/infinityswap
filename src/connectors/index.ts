@@ -76,7 +76,7 @@ export const walletconnect = new WalletConnectConnector({
 export const lattice = new LatticeConnector({
   chainId: 1,
   url: RPC[ChainId.MAINNET],
-  appName: 'SushiSwap'
+  appName: 'InfinitySwap'
 })
 
 // mainnet only
@@ -93,10 +93,10 @@ export const portis = new PortisConnector({
 
 // mainnet only
 export const walletlink = new WalletLinkConnector({
-  url: RPC[ChainId.MAINNET],
-  appName: 'SushiSwap',
-  appLogoUrl: 'https://raw.githubusercontent.com/sushiswap/art/master/sushi/logo-256x256.png'
-})
+         url: RPC[ChainId.MAINNET],
+         appName: 'InfinitySwap',
+         appLogoUrl: 'https://raw.githubusercontent.com/futurebankxyz/art/main/resources/infinityswap/logo-512x512.png'
+       })
 
 // mainnet only
 export const torus = new TorusConnector({
